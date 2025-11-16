@@ -21,10 +21,10 @@ public class Client {
                 System.out.print("> ");
                 String message = scanner.nextLine();
 
-                out.println(message); // отправляем строку серверу
+                out.println(message);
 
                 String response = in.readLine();
-                if (response == null) break; // сервер закрыл соединение
+                if (response == null) break;
 
                 System.out.println("Сервер: " + response);
 
