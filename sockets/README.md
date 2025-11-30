@@ -1,18 +1,29 @@
-## Getting Started
+## Сокеты на Java.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Предметная область - биржевой стакан. Клиенты делают заявки на покупку/продажу. Сам стакан оповещает всех подключенных клиентов о поступающих событиях. 
 
-## Folder Structure
+Каждое подключение клиента происходит в отдельном потоке. Реализованы паттерны ООП **Command** и **Observer**.
 
-The workspace contains two folders by default, where:
+## Run
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+```sh
+cd sockets # перейдите в папку проекта
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+find src -name "*.java" | xargs javac -d bin # компиляция проекта
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+java -cp bin ru.pechenkindd.server.Server # запуск сервера
 
-## Dependency Management
+java -cp bin ru.pechenkindd.client.Client # запуск одного клиента (можно много)
+```
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Example
+
+Запустите несколько клиентов и введите данные на одном из них.
+```sh
+NEW,1,BUY,150.50,100
+NEW,2,SELL,151.00,50
+NEW,3,SELL,149.50,30
+CANCEL,1
+```
+Наблюдайте информацию приходяющую с сервера на других клиентах.
+> P.S. Вводите команды без лишних пробелов, тк валидация данных для слабых.
