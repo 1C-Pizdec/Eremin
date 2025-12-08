@@ -1,0 +1,30 @@
+servers:
+  - rmi://localhost:1099
+  - rmi://localhost:2000
+
+expression: "(job_1 + job_2) / job_3"
+
+jobs:
+  job_1:
+    description: "Сумма и умножение"
+    steps:
+      - op: "+"
+        a: 3
+        b: 5
+      - op: "*"
+        from: prev
+        b: 2
+
+  job_2:
+    description: "Сложение двух чисел"
+    steps:
+      - op: "+"
+        a: 10
+        b: 4
+
+  job_3:
+    description: "Умножение"
+    steps:
+      - op: "*"
+        a: 2
+        b: 3
