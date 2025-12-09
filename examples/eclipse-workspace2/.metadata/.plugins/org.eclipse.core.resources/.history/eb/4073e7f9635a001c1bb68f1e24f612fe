@@ -1,0 +1,5 @@
+package ru.bmstu.rvvs;
+
+public interface productRepository {
+
+}

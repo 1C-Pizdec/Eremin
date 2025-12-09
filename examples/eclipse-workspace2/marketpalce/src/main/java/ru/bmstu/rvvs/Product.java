@@ -1,0 +1,78 @@
+package ru.bmstu.rvvs;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+@Entity
+public class Product implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id @GeneratedValue
+	private Long id;
+	
+	private String name;
+	private String producer;
+	private double price;
+	private String country;
+	
+	public Product() {
+		super();
+	}
+
+	public Product(String name, String producer, double price, String country) {
+		super();
+		this.name = name;
+		this.producer = producer;
+		this.price = price;
+		this.country = country;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getProducer() {
+		return producer;
+	}
+
+	public void setProducer(String producer) {
+		this.producer = producer;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+	
+
+}

@@ -1,0 +1,59 @@
+package ru.bmstu.rvvs;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ProductController {
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public List<Product> getAll() {
+		return productRepository.findAll();
+	}
+	
+	@RequestMapping(value = "/products", method = RequestMethod.GET)
+	public Page<Product> listProduct(
+			@RequestParam(name = "page", defaultValue = "0") int page, 
+			@RequestParam(name = "size", defaultValue = "5") int size){
+		return productRepository.findAll(PageRequest.of(page, size));		
+	}
+	
+	@RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+	public Optional<Product> getProduct(@PathVariable("id") Long id) {
+		return productRepository.findById(id);
+		
+	}
+	
+	@RequestMapping(value = "/prod", method = RequestMethod.POST)
+	public Product addProduct ( @RequestBody Product p) {
+		return productRepository.saveAndFlush(p);
+	}
+	
+	@RequestMapping(value = "/prod/{id}", method = RequestMethod.PUT)
+	public Product updatePoduct (
+			@RequestBody Product p, 
+			@PathVariable("id") Long id) {
+		p.setId(id);
+		return productRepository.saveAndFlush(p);
+		
+	}
+	
+	@RequestMapping(value = "/prod/{id}", method = RequestMethod.DELETE)
+	public void deleteProduct(@PathVariable("id") Long id) {
+		
+	}
+	
+}

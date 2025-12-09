@@ -1,0 +1,12 @@
+package ru.bmstu.rvvs;
+
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface productRepository extends JpaRepository<Product, Long>{
+	
+	@Query("SELECT * FROM Product WHERE name LIKE :x")
+	public Page<Product> findProduct(@Param("x") String keyWord, Pageable pageable);
+}

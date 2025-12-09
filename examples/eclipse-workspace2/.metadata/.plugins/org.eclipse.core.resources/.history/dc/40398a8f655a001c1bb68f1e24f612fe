@@ -1,0 +1,10 @@
+package ru.bmstu.rvvs;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class ProductController {
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
+}
