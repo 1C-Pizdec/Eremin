@@ -8,9 +8,11 @@ import ru.pechenkindd.rmi.contract.OperationDTO;
 public class ExpressionExecutorServer implements ExpressionExecutor {
 
     @Override
-    public Double execStep(OperationDTO operation) throws RemoteException {
+    public Double execute(OperationDTO operation) throws RemoteException {
         double A = operation.a;
         double B = operation.b;
+
+        System.out.println("Считаю...");
 
         return switch (operation.op) {
             case "add": 

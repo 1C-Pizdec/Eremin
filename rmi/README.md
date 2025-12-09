@@ -1,18 +1,15 @@
-## Getting Started
+## RMI "Решатель простых выражений"
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Удалённый вызов методов (RMI) на Java. Выполняется удалённая передача объекта OperationDTO, который инкапсулирует в себя операцию
 
-## Folder Structure
+## Run Server
 
-The workspace contains two folders by default, where:
+```sh
+cd rmi # перейдите в папку проекта
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+find src -name "*.java" | xargs javac -d bin # компиляция проекта
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+java -cp bin ru.pechenkindd.server.Server 1099 # запуск сервера на порту 8080
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+java -cp bin ru.pechenkindd.client.Client localhost 1099 # запуск клиента для его подключения к localhost 8080
+```

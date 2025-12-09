@@ -5,5 +5,5 @@ import java.rmi.RemoteException;
 
 public interface ExpressionExecutor extends Remote {
 
-    Double execStep(OperationDTO operation) throws RemoteException;
+    Double execute(OperationDTO operation) throws RemoteException;
 }
